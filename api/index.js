@@ -28,9 +28,21 @@ app.post('/register/user', async (req, res) => {
     res.send('user Created')
 })
 
-app.post('/login/user', (req, res) => {
+app.post('/login/user', async (req, res) => {
     const jsonbody = req.body
-    console.log(jsonbody)
+    try {
+        const document = await userModelClass.findDocument('email', `${jsonbody.email}`)
+        const booleanResult = await HashClass.compareHash(jsonbody.password, document.password)
+        if (booleanResult) {
+            // encaminhar para um pagina renderizada com suas tasks
+        } else {
+            throw new Error('senha incorreta!')
+        }
+    } catch (error) {
+        console.log({
+            error: 'Ocorreu um erro!'
+        })
+    }
     res.send('teste')
 })
 

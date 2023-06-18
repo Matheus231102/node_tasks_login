@@ -17,6 +17,27 @@ class Database {
             })
         }
     }
+    
+    async findDocument(Parameter, userInfo) {
+        try {
+            const query = {}
+            query[Parameter] = userInfo
+
+            const document = await userModel.findOne(query)
+
+            console.log({
+                was_user_email_found: true
+            })
+            return document
+        } catch (err) {
+            console.log({
+                was_user_email_found: false,
+                error: err
+            })
+            throw err
+        }
+    }
+
 }
 
 const userModelClass = new Database(userModel)
