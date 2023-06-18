@@ -23,3 +23,7 @@ document.getElementById('registerForm').addEventListener('submit', (event) => {
     
 })
 
+document.getElementById('loginbutton').addEventListener('click', () => {
+    window.location.href = 'login.html'
+})
+
