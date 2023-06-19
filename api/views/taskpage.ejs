@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de tarefas</title>
+</head>
+<body>
+    <h1>Lista de <%= userName %></h1>
+
+    <form id="taskForm">
+        <input type="text" id="taskInput" placeholder="Digite uma tarefa">
+        <button type="button" onclick="addTask()">Adicionar</button>
+        <button type="button" onclick="deleteAllTasks()">Adicionar</button>
+    </form>
+
+    <ul id="taskList">
+        <% userTasks.forEach((value) => { %> 
+            <li><%= value %></li>
+        <% }) %>
+    </ul>
+</body>
+
+</html>

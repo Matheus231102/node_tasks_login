@@ -18,14 +18,12 @@ class Hash {
     }
 
     async compareHash(string, hashString) {
-        console.log(`this is the string ${string}`)
-        console.log(`this is the hashstring ${hashString}`)
         try {
             const booleanResult = await bcrypt.compare(string, hashString) 
             console.log({
                 is_comparison_correct: booleanResult
             })
-            return booleanResult // it's a booleanResult
+            return booleanResult 
         } catch (err) {
             console.log({
                 error: err

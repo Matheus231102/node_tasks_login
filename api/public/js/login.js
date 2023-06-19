@@ -17,17 +17,18 @@ document.getElementById('loginForm').addEventListener('submit', (event) => {
         body: JSON.stringify(jsonBody)
     })
     .then((response) => {
-        console.log(response)
+        if (response.ok) {
+            window.location.href = '/mainpage';
+        } else {
+            throw new Error('Erro de login');
+        }
     })
-    .catch((err) => {
+    .catch(() => {
         console.log({
             login_status: false,
-            error: err
+            error: "login falhou!"
         })
+        location.reload()
     })
-})
-
-document.getElementById('registerbutton').addEventListener('click', () => {
-    window.location.href = 'register.html'
 })
 
